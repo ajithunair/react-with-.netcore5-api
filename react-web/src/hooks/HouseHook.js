@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import config from "../config";
 
 const useFetchHouses = () =>{
     const [houses, setHouses] = useState([]);
@@ -8,7 +9,7 @@ const useFetchHouses = () =>{
         // const response = await fetch('https://localhost:5000/api/Houses');
         // const data = await response.json();
         // setHouses(data);
-        axios.get('https://localhost:5000/api/Houses').then(response => {
+        axios.get(`${config.baseApiUrl}/api/houses`).then(response => {
             setHouses(response.data);
         });
     };
