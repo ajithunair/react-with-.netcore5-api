@@ -6,9 +6,9 @@ const HouseList = () => {
     return (
         <div>
             <div className="row mb-2">
-                <h5 className="themeFontColor text-center">
+                <h3 className="themeFontColor text-center">
                     Houses currently on the market
-                </h5>
+                </h3>
             </div>
             <table className="table table-hover">
                 <thead>
@@ -20,7 +20,7 @@ const HouseList = () => {
                 </thead>
                 <tbody>
                     {
-                        houses.map(h => (
+                        houses && houses.map(h => (
                             <tr key={h.id}>
                                 <td>{h.address}</td>
                                 <td>{h.country}</td>
