@@ -9,5 +9,6 @@ namespace WebApi.Repositories
     public interface IHouseRepository
     {
         Task<IEnumerable<HouseEntity>> GetHousesAsync();
+        Task<HouseEntity> GetHouseAsync(int id);
     }
 }

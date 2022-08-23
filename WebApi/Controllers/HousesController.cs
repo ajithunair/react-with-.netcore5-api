@@ -25,5 +25,15 @@ namespace WebApi.Controllers
         {
             return (await repository.GetHousesAsync()).Select(h => h.AsDto());
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<HouseDto>> GetHouseAsync(int id)
+        {
+            var house = await repository.GetHouseAsync(id);
+            if (house == null)
+                return NotFound();
+
+            return house.AsDto();
+        }
     }
 }
