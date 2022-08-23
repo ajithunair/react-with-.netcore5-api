@@ -2,8 +2,8 @@ import useFetchHouses from "../hooks/HouseHook";
 import { currencyFormatter } from "../config";
 
 const HouseList = () => {
-    const houses = useFetchHouses();
-
+    const {data} = useFetchHouses();
+    console.log(data)
     return (
         <div>
             <div className="row mb-2">
@@ -21,7 +21,7 @@ const HouseList = () => {
                 </thead>
                 <tbody>
                     {
-                        houses && houses.map(h => (
+                        data && data.map(h => (
                             <tr key={h.id}>
                                 <td>{h.address}</td>
                                 <td>{h.country}</td>
