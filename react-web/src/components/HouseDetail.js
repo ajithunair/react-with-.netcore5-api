@@ -1,9 +1,10 @@
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import { currencyFormatter } from '../config';
-import { useFetchHouse } from '../hooks/HouseHook';
+import { useDeleteHouse, useFetchHouse } from '../hooks/HouseHook';
 import ApiStatus from './ApiStatus';
 import noimage from '../main/No-Image.png'
 const HouseDetail = () => {
+    const deleteHouseMutation = useDeleteHouse();
     const {id} = useParams();
     if (!id) throw Error("House id not found")
     const houseId = parseInt(id);
@@ -20,6 +21,24 @@ const HouseDetail = () => {
             <div className='col-3'>
                 <div className='row'>
                     <img alt='House' src={data.photo ? data.photo : noimage} />
+                </div>
+                <div className='row mt-3'>
+                    <div className='col-2'>
+                        <Link className='btn btn-primary'
+                            to={`/houses/edit/${data.id}`}>
+                            Edit
+                        </Link>
+                    </div>
+                    <div className='col-2'>
+                        <button className='btn btn-primary'
+                            onClick={ ()=>{
+                                if(window.confirm('Are you sure?'))
+                                    deleteHouseMutation.mutate(data)
+                                }
+                            }>
+                            Delete
+                        </button>
+                    </div>
                 </div>
             </div>
             <div className='col-6'>

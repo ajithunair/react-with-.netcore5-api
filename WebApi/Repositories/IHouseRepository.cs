@@ -10,5 +10,8 @@ namespace WebApi.Repositories
     {
         Task<IEnumerable<HouseEntity>> GetHousesAsync();
         Task<HouseEntity> GetHouseAsync(int id);
+        Task CreateHouseAsync(HouseEntity house);
+        Task UpdateHouseAsync(HouseEntity house);
+        Task DeleteHouseAsync(int id);
     }
 }
